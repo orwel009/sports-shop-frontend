@@ -1,0 +1,37 @@
+/* Navbar background */
+.custom-navbar {
+  background-color: #111;
+  padding: 10px 0;
+}
+
+.custom-brand {
+  color: #ff7b00 !important;
+  font-weight: bold;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.custom-brand:hover {
+  color: #ffa94d !important;
+  text-decoration: none;
+}
+
+.custom-link {
+  color: #ff7b00 !important;
+  margin-right: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-link:hover {
+  color: #ffa94d !important;
+  transform: translateY(-2px);
+}
+
+.navbar-toggler {
+  border: 1px solid #ff7b00;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}

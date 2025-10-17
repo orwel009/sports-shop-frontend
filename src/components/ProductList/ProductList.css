@@ -1,0 +1,42 @@
+.filter-bar {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+
+.filter-item {
+  min-width: 120px;
+}
+
+.filter-item .form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #495057;
+}
+
+.filter-item .form-control,
+.filter-item .form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-item .form-control:focus,
+.filter-item .form-select:focus {
+  border-color: #6610f2;
+  box-shadow: 0 0 0 0.2rem rgba(102,16,242,0.2);
+}
+
+/* Mobile & Tablet Responsive */
+@media (max-width: 992px) { /* large tablets */
+  .filter-bar {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+
+  .filter-item {
+    width: 100% !important;
+  }
+}
