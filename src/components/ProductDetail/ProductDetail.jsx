@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import API from '../../services/api';
-import './ProductDetail.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import API from "../../services/api";
+import "./ProductDetail.css";
 
 const ProductDetail = () => {
+  const navigate = useNavigate()
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -13,41 +14,80 @@ const ProductDetail = () => {
         const res = await API.get(`/products/${id}`);
         setProduct(res.data);
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching product:", err);
       }
     };
     fetchProduct();
   }, [id]);
 
-  if (!product) return <p className="text-center mt-5">Loading...</p>;
+  const onBuyNow = ()=>{
+    const token = localStorage.getItem("token")
+    if(!token){
+      alert("Login to continue")
+      navigate('/login')
+      return
+    }
+    alert("Buy Now")
+  }
+  const onAddToCart = ()=>{
+    const token = localStorage.getItem("token")
+    if(!token){
+      alert("Login to continue")
+      navigate('/login')
+      return
+    }
+    alert("Added to Cart")
+  }
+
+  if (!product)
+    return <div className="loading-screen">Loading product details...</div>;
 
   return (
-    <div className="container my-5">
-      <div className="product-detail-card p-4 shadow-lg rounded d-flex flex-wrap gap-4">
-        {/* Product Image */}
-        <div className="product-image flex-fill text-center">
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            className="img-fluid rounded"
-          />
-        </div>
+    <div className="container product-detail-container py-5">
+      <div className="product-detail-card shadow-lg rounded-4 overflow-hidden">
+        <div className="row g-0">
+          {/* Left: Product Image */}
+          <div className="col-md-6 product-image-section d-flex align-items-center justify-content-center">
+            <img
+              src={product.images[0]}
+              alt={product.name}
+              className="img-fluid rounded-3 product-detail-image"
+            />
+          </div>
 
-        {/* Product Info */}
-        <div className="product-info flex-fill">
-          <h2 className="product-name mb-3">{product.name}</h2>
-          <p className="mb-2"><strong>Brand:</strong> {product.brand}</p>
-          <p className="mb-2"><strong>Category:</strong> {product.category}</p>
-          <p className="mb-2"><strong>Price:</strong> ${product.price}</p>
-          <p className={`mb-2 stock ${product.stock > 0 ? 'in-stock' : 'out-stock'}`}>
-            <strong>Stock:</strong> {product.stock > 0 ? 'Available' : 'Out of Stock'}
-          </p>
-          <p className="mb-4"><strong>Description:</strong> {product.description}</p>
+          {/* Right: Product Info */}
+          <div className="col-md-6 product-info-section p-5">
+            <h2 className="product-name mb-3">{product.name}</h2>
+            <p className="text-muted mb-1">Brand: <span>{product.brand}</span></p>
+            <p className="text-muted mb-1">Category: <span>{product.category}</span></p>
+            <p className="product-price mt-3 mb-3">${product.price}</p>
 
-          {/* Action Buttons */}
-          <div className="d-flex flex-wrap gap-3">
-            <button className="btn btn-gradient w-auto">Buy Now</button>
-            <button className="btn btn-outline-gradient w-auto">Add to Cart</button>
+            <p
+              className={`stock-status ${product.stock > 0 ? "in-stock" : "out-stock"
+                }`}
+            >
+              {product.stock > 0 ? "In Stock" : "Out of Stock"}
+            </p>
+
+            <p className="product-description mt-4">
+              {product.description}
+            </p>
+
+            {/* Action Buttons */}
+            <div className="action-buttons mt-4 d-flex flex-wrap gap-3">
+              <button className="btn btn-gradient px-4 py-2" 
+                onClick={() => onBuyNow(product)}
+                disabled={product.stock === 0}>
+                <i className="bi bi-bag-fill me-2"></i> Buy Now
+              </button>
+              <button
+                className="btn btn-success btn-add"
+                onClick={() => onAddToCart(product)}
+                disabled={product.stock === 0}
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -52,7 +52,7 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 bg-light">
       {/* Filter Bar */}
       <div className="filter-bar d-flex flex-wrap align-items-end gap-3 mb-4">
         <div className="filter-item flex-fill">
@@ -117,7 +117,7 @@ const ProductList = () => {
       {/* Product Grid */}
       <div className="row">
         {products.map((p) => (
-          <div key={p._id} className="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div key={p._id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
             <ProductCard product={p} />
           </div>
         ))}
