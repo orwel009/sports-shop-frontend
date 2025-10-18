@@ -52,7 +52,7 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container mt-4 bg-light">
+    <div className="product-list">
       {/* Filter Bar */}
       <div className="filter-bar d-flex flex-wrap align-items-end gap-3 mb-4">
         <div className="filter-item flex-fill">

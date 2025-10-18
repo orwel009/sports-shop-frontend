@@ -1,3 +1,33 @@
+.product-list {
+  position: relative;
+  min-height: 100vh;
+  background: url("/public/images/product-list-bg.jpg") no-repeat center center/cover;
+  overflow: hidden;
+  background-attachment: fixed;
+  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Soft blur & overlay layer */
+.product-list::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* semi-dark overlay for contrast */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 0;
+}
+
+.product-list > * {
+  position: relative;
+  z-index: 1; /* ensures cards are above the blur */
+}
+
+
 .filter-bar {
   background-color: #fff;
   border-radius: 12px;

@@ -84,13 +84,25 @@
 
 /* Stock text */
 .card-stock.in-stock {
-  color: #28a745;
+  color: #fff;
+  background-color: #28a745;
   font-weight: 500;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  width: fit-content;
 }
 
 .card-stock.out-stock {
-  color: #dc3545;
+  color: #fff;
+  background-color: #dc3545;
   font-weight: 500;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  width: fit-content;
 }
 
 /* Responsive adjustments */

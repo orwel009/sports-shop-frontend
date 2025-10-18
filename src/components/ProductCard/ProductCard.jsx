@@ -19,11 +19,11 @@ const ProductCard = ({ product }) => {
 
       {/* Product Details */}
       <div className="card-body">
-        <p className="card-brand">{product.brand}</p>
-        <h5 className="card-title">{product.name}</h5>
-        <p className="card-price">${product.price.toFixed(2)}</p>
+        <p className="card-brand ms-3">{product.brand}</p>
+        <h5 className="card-title ms-3">{product.name}</h5>
+        <p className="card-price ms-3">${product.price.toFixed(2)}</p>
         <p
-          className={`card-stock ${product.stock > 0 ? 'in-stock' : 'out-stock'}`}
+          className={`card-stock ${product.stock > 0 ? 'in-stock' : 'out-stock'} ms-3`}
         >
           {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
         </p>
