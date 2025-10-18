@@ -1,0 +1,76 @@
+/* Navbar background */
+.custom-navbar {
+  background-color: #111;
+  padding: 10px 0;
+}
+
+.custom-brand {
+  color: #ff7b00 !important;
+  font-weight: bold;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.custom-brand:hover {
+  color: #ffa94d !important;
+  text-decoration: none;
+}
+
+.custom-link {
+  color: #ff7b00 !important;
+  margin-right: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-link:hover {
+  color: #ffa94d !important;
+  transform: translateY(-2px);
+}
+
+/* Common style for both buttons */
+.login-btn,
+.reg-btn {
+  display: inline-block;
+  font-weight: 600;
+  padding: 10px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Login button gradient */
+.login-btn {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+}
+
+.login-btn:hover {
+  background: linear-gradient(90deg, #0062cc, #0090cc);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Register button gradient */
+.reg-btn {
+  background: linear-gradient(90deg, #28a745, #85e085);
+}
+
+.reg-btn:hover {
+  background: linear-gradient(90deg, #1e7e34, #57c857);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+.navbar-toggler {
+  border: 1px solid #ff7b00;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+

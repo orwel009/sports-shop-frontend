@@ -1,0 +1,63 @@
+/* Page background */
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ea8366 0%, #a2584b 100%);
+  padding: 2rem;
+}
+
+/* Registration card */
+.register-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  padding: 2rem;
+}
+
+/* Logo */
+.register-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Title */
+.register-title {
+  font-weight: 600;
+  color: #343a40;
+}
+
+/* Gradient register button */
+.btn-gradient {
+  background: linear-gradient(90deg, #6610f2 0%, #007bff 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 0;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #007bff 0%, #6610f2 100%);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Links */
+.link-primary {
+  color: #6610f2;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link-primary:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .register-card {
+    padding: 1.5rem;
+  }
+}

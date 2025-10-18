@@ -1,0 +1,138 @@
+/* Container styling */
+.product-detail-container {
+  background: #f8fafc;
+  min-height: 100vh;
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* Card layout */
+.product-detail-card {
+  background: #fff;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.product-detail-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product image */
+.product-image-section {
+  background: linear-gradient(135deg, #e0f2ff 0%, #f8f9fa 100%);
+  padding: 2rem;
+}
+
+.product-detail-image {
+  max-width: 85%;
+  transition: transform 0.4s ease;
+}
+
+.product-detail-image:hover {
+  transform: scale(1.05);
+}
+
+/* Product Info */
+.product-info-section {
+  background: #ffffff;
+}
+
+.product-name {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #1a1a1a;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.stock-status {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  display: inline-block;
+}
+
+.in-stock {
+  color: #0a7c2f;
+  background-color: #e9f9ee;
+}
+
+.out-stock {
+  color: #b30d0d;
+  background-color: #fceaea;
+}
+
+/* Description */
+.product-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Buttons */
+.btn-gradient {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(90deg, #0062cc, #0090cc);
+  transform: scale(1.05);
+}
+
+.btn-add {
+  flex: 1;
+  background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+  border: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-add:hover:not(:disabled) {
+  background: linear-gradient(90deg, #20c997 0%, #28a745 100%);
+}
+
+.btn-add:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading screen */
+.loading-screen {
+  text-align: center;
+  padding: 5rem;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .product-detail-card {
+    flex-direction: column;
+  }
+  .product-info-section {
+    padding: 2rem;
+  }
+  .product-name {
+    font-size: 1.6rem;
+  }
+}
