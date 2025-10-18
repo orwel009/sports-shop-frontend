@@ -1,32 +1,38 @@
-.product-list {
-  position: relative;
-  min-height: 100vh;
-  background: url("/public/images/product-list-bg.jpg") no-repeat center center/cover;
-  overflow: hidden;
-  background-attachment: fixed;
-  padding: 40px 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* Soft blur & overlay layer */
+/* Background layer */
 .product-list::before {
   content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35); /* semi-dark overlay for contrast */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("/public/images/product-list-bg.jpg") no-repeat center center/cover;
+  background-size: cover;
+  background-position: center;
+  z-index: -2; /* behind everything including overlay */
+  pointer-events: none;
+}
+
+/* Blur + semi-transparent overlay */
+.product-list::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35); /* overlay color */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 0;
+  z-index: -1; /* above background, below content */
+  pointer-events: none;
 }
 
+/* Content above layers */
 .product-list > * {
   position: relative;
-  z-index: 1; /* ensures cards are above the blur */
+  z-index: 1;
 }
-
 
 .filter-bar {
   background-color: #fff;

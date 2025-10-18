@@ -1,0 +1,83 @@
+.banner {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* disable clicks for inactive slides */
+}
+
+.banner-slide.active {
+  opacity: 1;
+  pointer-events: auto; /* enable clicks for active slide */
+}
+
+.banner-content {
+  text-align: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 30px 50px;
+  border-radius: 16px;
+}
+
+.banner-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.btn-shop {
+  background: linear-gradient(90deg, #ff5500, #ffcc00);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 12px 28px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none; /* for <Link> */
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-shop:hover {
+  background: linear-gradient(90deg, #c24101, #cea501);
+  transform: scale(1.05);
+}
+
+/* Navigation Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
+}

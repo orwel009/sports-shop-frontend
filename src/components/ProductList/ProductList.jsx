@@ -10,6 +10,7 @@ const ProductList = () => {
     brand: '',
     minPrice: '',
     maxPrice: '',
+    search: ''
   });
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
@@ -54,7 +55,7 @@ const ProductList = () => {
   return (
     <div className="product-list">
       {/* Filter Bar */}
-      <div className="filter-bar d-flex flex-wrap align-items-end gap-3 mb-4">
+      <div className="filter-bar d-flex flex-wrap align-items-end gap-3 mb-4 mt-2 ms-5 me-5">
         <div className="filter-item flex-fill">
           <label htmlFor="category" className="form-label">Category</label>
           <select
@@ -112,10 +113,24 @@ const ProductList = () => {
             min="0"
           />
         </div>
+
+        <div className="filter-item flex-fill">
+          <label htmlFor="search" className="form-label">Search</label>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            value={filters.search || ''}
+            onChange={handleChange}
+            className="form-control"
+            placeholder="Search products..."
+          />
+        </div>
+
       </div>
 
       {/* Product Grid */}
-      <div className="row">
+      <div className="row m-2">
         {products.map((p) => (
           <div key={p._id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
             <ProductCard product={p} />
