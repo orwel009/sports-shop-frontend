@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../../services/api';
 import ProductCard from '../ProductCard/ProductCard';
+import Footer from '../Footer/Footer'
 import './ProductList.css';
 
 const ProductList = () => {
@@ -53,6 +54,7 @@ const ProductList = () => {
   };
 
   return (
+    <>
     <div className="product-list">
       {/* Filter Bar */}
       <div className="filter-bar d-flex flex-wrap align-items-end gap-3 mb-4 mt-2 ms-5 me-5">
@@ -138,6 +140,9 @@ const ProductList = () => {
         ))}
       </div>
     </div>
+
+    <Footer/>
+    </>
   );
 };
 
