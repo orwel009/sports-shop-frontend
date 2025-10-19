@@ -5,6 +5,8 @@ import API from '../services/api';
 import ProductCard from '../components/ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
 import AboutUs from '../components/AboutUs/AboutUs';
+import CustomerReview from '../components/CustomerReview/CustomerReview';
+import Footer from '../components/Footer/Footer';
 
 const Home = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -62,6 +64,8 @@ const Home = () => {
       </section>
 
       <AboutUs/>
+      <CustomerReview/>
+      <Footer/>
     </>
   );
 };
