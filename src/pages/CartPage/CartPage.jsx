@@ -12,6 +12,16 @@ const CartPage = () => {
     navigate("/checkout");
   };
 
+  const handleDecrease = (_id, currentQty) => {
+    if (currentQty > 1) {
+      dispatch(updateQuantity({ _id, quantity: currentQty - 1 }));
+    }
+  };
+
+  const handleIncrease = (_id, currentQty) => {
+    dispatch(updateQuantity({ _id, quantity: currentQty + 1 }));
+  };
+
   return (
     <div className="container py-5">
       <h2 className="mb-4">Your Cart</h2>
@@ -26,18 +36,32 @@ const CartPage = () => {
                 <div>
                   <h5>{item.name}</h5>
                   <p>${item.price}</p>
-                  <input
-                    type="number"
-                    value={item.quantity}
-                    min="1"
-                    className="form-control"
-                    style={{ width: "80px" }}
-                    onChange={(e) =>
-                      dispatch(updateQuantity({ id: item._id, quantity: Number(e.target.value) }))
-                    }
-                  />
+
+                  {/* Quantity Control */}
+                  <div className="d-flex align-items-center">
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() => handleDecrease(item._id, item.quantity)}
+                    >
+                      -
+                    </button>
+                    <input
+                      type="text"
+                      value={item.quantity}
+                      readOnly
+                      className="form-control text-center mx-2"
+                      style={{ width: "50px" }}
+                    />
+                    <button
+                      className="btn btn-outline-secondary"
+                      onClick={() => handleIncrease(item._id, item.quantity)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
+
               <button
                 className="btn btn-danger"
                 onClick={() => dispatch(removeFromCart(item._id))}
@@ -46,6 +70,7 @@ const CartPage = () => {
               </button>
             </div>
           ))}
+
           <div className="d-flex justify-content-between align-items-center mt-4">
             <h4>Total: ${totalAmount.toFixed(2)}</h4>
             <button className="btn btn-primary" onClick={handleCheckout}>
