@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="es-top row gy-4">
           <div className="col-md-4 d-flex flex-column justify-content-start">
             <div className="brand-wrap">
-              <h3 className="brand-title">Ersatz Sports Hub</h3>
+              <h3 className="brand-title">Online Sports Store</h3>
               <p className="brand-sub">Gear. Passion. Performance.</p>
             </div>
 
@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className="es-bottom d-flex flex-column flex-md-row justify-content-between align-items-center mt-4 pt-3">
-          <small className="copyright">© {new Date().getFullYear()} Ersatz Sports Hub. All Rights Reserved.</small>
+          <small className="copyright">© {new Date().getFullYear()} Online Sports Store. All Rights Reserved.</small>
           <div className="foot-links mt-3 mt-md-0">
             <Link to="/privacy" className="me-3">Privacy</Link>
             <Link to="/shipping" className="me-3">Shipping</Link>
