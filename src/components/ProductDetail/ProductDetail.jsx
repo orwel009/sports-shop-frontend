@@ -4,9 +4,13 @@ import API from "../../services/api";
 import "./ProductDetail.css";
 import Footer from '../Footer/Footer'
 import CustomerReview from '../CustomerReview/CustomerReview'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cartSlice';
+
 
 const ProductDetail = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -22,25 +26,33 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
-  const onBuyNow = () => {
+  const onBuyNow = async (product) => {
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Login to continue");
-      navigate('/login');
+      alert("Please login to proceed with your purchase.");
+      navigate("/login");
       return;
     }
-    alert("Buy Now");
-  }
 
-  const onAddToCart = () => {
+    // Temporarily clear cart state for isolated buy-now purchase
+    localStorage.setItem("buyNowProduct", JSON.stringify(product));
+
+    // Navigate to checkout but only for this item
+    navigate("/checkout", { state: { buyNow: true, product } });
+  };
+
+
+  const onAddToCart = (product) => {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Login to continue");
       navigate('/login');
       return;
     }
-    alert("Added to Cart");
-  }
+    dispatch(addToCart(product));
+    alert("Product added to cart!");
+  };
+
 
   if (!product)
     return <div className="loading-screen">Loading product details...</div>;
