@@ -37,11 +37,10 @@ const Profile = () => {
     <div className="row justify-content-center">
       <div className="col-md-6">
         {user ? (
-          <div className="card p-4">
+          <div className="card p-4 mt-5">
             <h2 className="card-title">Profile</h2>
             <p><strong>Name:</strong> {user.name}</p>
             <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Role:</strong> {user.role}</p>
           </div>
         ) : (
           <p>Loading user info...</p>

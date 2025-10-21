@@ -10,6 +10,9 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import CartPage from './pages/CartPage/CartPage';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import OrdersPage from './pages/OrdersPage/OrdersPage';
+import AdminLogin from './pages/Admin/AdminLogin';
+import AdminDashboard from './pages/Admin/AdminDashboard';
+import ProtectedAdminRoute from './pages/Admin/ProtectedAdminRoute';
 
 function App() {
   return (
@@ -25,6 +28,12 @@ function App() {
             <Route path='/cart' element={<CartPage/>} />
             <Route path='/checkout' element={<CheckoutPage/>} />
             <Route path='/orders' element={<OrdersPage/>} />
+
+            <Route path='/admin/login' element={<AdminLogin />} />
+            <Route path='/admin/dashboard' element={ 
+              <ProtectedAdminRoute>
+              <AdminDashboard />
+              </ProtectedAdminRoute> } />
           </Routes>
     </>
   );
