@@ -15,7 +15,7 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const res = await API.get("/products");
-        const products = res.data;
+        const products = res.data.products;
         const shuffled = [...products].sort(() => 0.5 - Math.random());
         setAllProducts(shuffled.slice(0, 4));
       } catch (err) {

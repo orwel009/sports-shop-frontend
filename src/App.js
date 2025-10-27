@@ -13,6 +13,9 @@ import OrdersPage from './pages/OrdersPage/OrdersPage';
 import AdminLogin from './pages/Admin/AdminLogin';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import ProtectedAdminRoute from './pages/Admin/ProtectedAdminRoute';
+import AdminProducts from './pages/Admin/AdminProducts';
+import AdminProductView from './pages/Admin/AdminProductView';
+import AddProduct from './pages/Admin/AddProduct';
 
 function App() {
   return (
@@ -30,10 +33,11 @@ function App() {
             <Route path='/orders' element={<OrdersPage/>} />
 
             <Route path='/admin/login' element={<AdminLogin />} />
-            <Route path='/admin/dashboard' element={ 
-              <ProtectedAdminRoute>
-              <AdminDashboard />
-              </ProtectedAdminRoute> } />
+            <Route path='/admin/dashboard' element={ <ProtectedAdminRoute><AdminDashboard /></ProtectedAdminRoute> } />
+            <Route path='/admin/products' element={ <ProtectedAdminRoute><AdminProducts /></ProtectedAdminRoute> } />
+            <Route path='/admin/products/:id' element={ <ProtectedAdminRoute><AdminProductView /></ProtectedAdminRoute> } />
+            <Route path='/admin/add-product' element={ <ProtectedAdminRoute><AddProduct /></ProtectedAdminRoute> } />
+
           </Routes>
     </>
   );
