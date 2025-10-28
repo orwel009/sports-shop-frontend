@@ -19,6 +19,7 @@ const AdminProductView = () => {
     stock: '',
     description: '',
     images: [],
+    isFeatured: false,
   });
 
   // Fetch product data
@@ -34,6 +35,7 @@ const AdminProductView = () => {
         stock: res.data.stock,
         description: res.data.description,
         images: res.data.images || [],
+        isFeatured: res.data.isFeatured || false,
       });
     } catch (err) {
       console.error('Error fetching product', err);
@@ -48,8 +50,11 @@ const AdminProductView = () => {
 
   // Handle input change
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   // Handle image file selection
@@ -92,7 +97,7 @@ const AdminProductView = () => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
         await adminAPI.delete(`/products/${id}`);
-        alert('🗑️ Product deleted successfully!');
+        alert('Product deleted successfully!');
         navigate('/admin/products');
       } catch (err) {
         console.error('Error deleting product', err);
@@ -141,6 +146,14 @@ const AdminProductView = () => {
               <p><strong>Price:</strong> ₹{product.price}</p>
               <p><strong>Stock:</strong> {product.stock}</p>
               <p><strong>Description:</strong> {product.description}</p>
+              <p>
+                <strong>Featured:</strong>{' '}
+                {product.isFeatured ? (
+                  <span className="text-success">Yes</span>
+                ) : (
+                  <span className="text-muted">No</span>
+                )}
+              </p>
             </div>
           </div>
         </div>
@@ -203,6 +216,23 @@ const AdminProductView = () => {
                 onChange={handleChange}
                 required
               />
+            </div>
+
+            <div className="col-md-6 mb-3">
+              <label className="form-label">Featured Product</label>
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="isFeatured"
+                  name="isFeatured"
+                  checked={formData.isFeatured}
+                  onChange={handleChange}
+                />
+                <label className="form-check-label" htmlFor="isFeatured">
+                  Mark as Featured
+                </label>
+              </div>
             </div>
 
             <div className="col-md-12 mb-3">

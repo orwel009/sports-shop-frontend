@@ -13,13 +13,13 @@ const AdminAddProduct = () => {
     stock: '',
     description: '',
     imagesFiles: [],
+    isFeatured: false,
   });
 
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [newBrand, setNewBrand] = useState('');
   const [newCategory, setNewCategory] = useState('');
 
@@ -40,14 +40,18 @@ const AdminAddProduct = () => {
     fetchFilters();
   }, []);
 
+  // Handle input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
   };
 
   // Handle file input change
   const handleFileChange = (e) => {
-    const files = Array.from(e.target.files).slice(0, 5); // max 5
+    const files = Array.from(e.target.files).slice(0, 5);
     setFormData({ ...formData, imagesFiles: files });
 
     const previews = files.map((file) => URL.createObjectURL(file));
@@ -102,15 +106,11 @@ const AdminAddProduct = () => {
       data.append('brand', formData.brand);
       data.append('stock', formData.stock);
       data.append('description', formData.description);
+      data.append('isFeatured', formData.isFeatured); // ✅ send as string ("true"/"false")
 
-      formData.imagesFiles.forEach(file => data.append('images', file)); // key 'images'
+      formData.imagesFiles.forEach((file) => data.append('images', file));
 
-      // Debug logs
-      for (let [key, value] of data.entries()) {
-        console.log(key, value);
-      }
-
-      const res = await adminAPI.post('/products', data); // axios instance
+      const res = await adminAPI.post('/products', data);
       console.log(res.data);
 
       alert('Product added successfully!');
@@ -122,7 +122,6 @@ const AdminAddProduct = () => {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="container py-4">
@@ -224,6 +223,23 @@ const AdminAddProduct = () => {
               onChange={handleChange}
               required
             />
+          </div>
+
+          {/* Is Featured Toggle */}
+          <div className="col-md-6 mb-3 d-flex align-items-center">
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                name="isFeatured"
+                checked={formData.isFeatured}
+                onChange={handleChange}
+                id="isFeaturedSwitch"
+              />
+              <label className="form-check-label" htmlFor="isFeaturedSwitch">
+                Mark as Featured Product
+              </label>
+            </div>
           </div>
 
           {/* Description */}

@@ -35,7 +35,7 @@ const CartPage = () => {
                 <img src={item.images[0]} alt={item.name} style={{ width: "80px", marginRight: "20px" }} />
                 <div>
                   <h5>{item.name}</h5>
-                  <p>${item.price}</p>
+                  <p>₹{item.price}</p>
 
                   {/* Quantity Control */}
                   <div className="d-flex align-items-center">
@@ -72,7 +72,7 @@ const CartPage = () => {
           ))}
 
           <div className="d-flex justify-content-between align-items-center mt-4">
-            <h4>Total: ${totalAmount.toFixed(2)}</h4>
+            <h4>Total: ₹{totalAmount.toFixed(2)}</h4>
             <button className="btn btn-primary" onClick={handleCheckout}>
               Proceed to Checkout
             </button>

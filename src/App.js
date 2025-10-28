@@ -16,6 +16,7 @@ import ProtectedAdminRoute from './pages/Admin/ProtectedAdminRoute';
 import AdminProducts from './pages/Admin/AdminProducts';
 import AdminProductView from './pages/Admin/AdminProductView';
 import AddProduct from './pages/Admin/AddProduct';
+import ManageOrdersPage from './pages/Admin/ManageOrdersPage';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
             <Route path='/admin/products' element={ <ProtectedAdminRoute><AdminProducts /></ProtectedAdminRoute> } />
             <Route path='/admin/products/:id' element={ <ProtectedAdminRoute><AdminProductView /></ProtectedAdminRoute> } />
             <Route path='/admin/add-product' element={ <ProtectedAdminRoute><AddProduct /></ProtectedAdminRoute> } />
+            <Route path="/admin/orders" element={ <ProtectedAdminRoute><ManageOrdersPage /></ProtectedAdminRoute> } />
+
 
           </Routes>
     </>

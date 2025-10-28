@@ -1,4 +1,3 @@
-// src/pages/admin/AdminProducts.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import adminAPI from "../../services/adminApi";
@@ -43,7 +42,7 @@ const AdminProducts = () => {
         <table className="table table-striped table-hover align-middle">
           <thead className="table-dark">
             <tr>
-              <th>Image</th>
+              <th>Images</th>
               <th>Name</th>
               <th>Brand</th>
               <th>Price</th>
@@ -57,15 +56,30 @@ const AdminProducts = () => {
               products.map((product) => (
                 <tr key={product._id}>
                   <td>
-                    <img
-                      src={product.images?.[0]}
-                      alt={product.name}
-                      style={{ width: "60px", borderRadius: "8px" }}
-                    />
+                    <div className="d-flex flex-wrap gap-2">
+                      {product.images && product.images.length > 0 ? (
+                        product.images.map((img, index) => (
+                          <img
+                            key={index}
+                            src={img}
+                            alt={product.name}
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              objectFit: "cover",
+                              borderRadius: "8px",
+                              border: "1px solid #ddd",
+                            }}
+                          />
+                        ))
+                      ) : (
+                        <span className="text-muted">No Images</span>
+                      )}
+                    </div>
                   </td>
                   <td>{product.name}</td>
                   <td>{product.brand}</td>
-                  <td>${product.price}</td>
+                  <td>₹{product.price}</td>
                   <td>{product.stock}</td>
                   <td>{product.category}</td>
                   <td>

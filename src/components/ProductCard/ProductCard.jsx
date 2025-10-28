@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       <div className="card-body">
         <p className="card-brand ms-3">{product.brand}</p>
         <h5 className="card-title ms-3">{product.name}</h5>
-        <p className="card-price ms-3">${product.price.toFixed(2)}</p>
+        <p className="card-price ms-3">₹{product.price.toFixed(2)}</p>
         <p
           className={`card-stock ${product.stock > 0 ? 'in-stock' : 'out-stock'} ms-3`}
         >
